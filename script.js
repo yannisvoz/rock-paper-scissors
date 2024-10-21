@@ -11,6 +11,10 @@ function getComputerChoice() {
 
 function getHumanChoice() {
    let playerChoice = prompt("Please enter your choice (rock, paper, or scissors): ").toLowerCase()
+   if (playerChoice !== "rock" || playerChoice !== "paper" || playerChoice !== "scissors") {
+    console.log("Invalid choice")
+    return -1
+   }
    return playerChoice
 }
 
@@ -39,7 +43,7 @@ function playGame() {
             } else {
                 return "It's a tie! You both chose paper!"
             }
-        } else {
+        } else if (humanChoice === "scissors") {
             if (computerChoice === "rock") {
                 computerScore++
                 return "You lose! Rock beats scissors!"
@@ -58,4 +62,10 @@ function playGame() {
     console.log(playRound(player, computer))
     console.log(`Player score: ${humanScore}`)
     console.log(`Computer score: ${computerScore}`)
+}
+
+let turn = 0
+while (turn < 5) {
+    playGame()
+    turn++
 }
